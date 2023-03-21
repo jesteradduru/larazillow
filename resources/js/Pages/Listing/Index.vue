@@ -15,7 +15,7 @@ defineProps({
       <Link :href="route('listing.show', {listing: listing.id})">
         <Price :price="listing.price" class="text-2xl font-bold" />
         <ListingSpace :listing="listing" class="text-gray-800 dark:text-gray-300" />
-        <ListingAddress :listing="listing" class="text-gray-500 dark:text-gray-400" />
+        <ListingAddress :listing="listing" class="text-gray-400 dark:text-gray-400" />
       </Link>
       <div>
         <Link :href="route('listing.edit', {listing: listing.id})">

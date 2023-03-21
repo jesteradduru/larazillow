@@ -10,13 +10,13 @@ const flashSuccess = computed(() => usePage().props.flash.success)
     <div class="container mx-auto">
       <nav class="flex justify-between items-center">
         <div class="text-lg font-medium">
-          <Link class="" href="/listing">Listings</Link>&nbsp;
+          <Link class="" :href="route('listing.index')">Listings</Link>&nbsp;
         </div>
         <div class="text-xl font-bold text-indigo-600 dark:text-indigo-400">
-          LaraZillow
+          <Link :href="route('listing.index')">LaraZillow</Link>
         </div>
-        <div class="bg-indigo-600 p-2 rounded-md text-gray-100 dark:text-gray-100 hover:bg-indigo-700 hover:text-gray-300 cursor-auto">
-          <Link href="/listing/create">+ New Listing</Link>
+        <div class="btn-primary">
+          <Link :href="route('listing.create')">+ New Listing</Link>
         </div>
       </nav>
     </div>
