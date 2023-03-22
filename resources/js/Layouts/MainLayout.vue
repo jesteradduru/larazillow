@@ -7,7 +7,7 @@ const user = computed(() => usePage().props.user)
 </script>
 
 <template>
-  <header class="p-3 border-b border-gray-300 bg-gray-100 dark:bg-gray-900 dark:border-gray-600">
+  <header class="p-5 border-b border-gray-200 shadow bg-gray-100 dark:bg-gray-900 dark:border-gray-600">
     <div class="container mx-auto">
       <nav class="flex justify-between items-center">
         <div class="text-lg font-medium">
@@ -25,8 +25,9 @@ const user = computed(() => usePage().props.user)
 
           <Link :href="route('logout')" method="DELETE" as="button">Logout</Link>
         </div>
-        <div v-else>
-          <Link class="btn-primary" :href="route('login')">Sign-in</Link>
+        <div v-else class="flex items-center gap-2">
+          <Link :href="route('user-account.create')">Register</Link>
+          <Link :href="route('login')">Sign-in</Link>
         </div>
       </nav>
     </div>
