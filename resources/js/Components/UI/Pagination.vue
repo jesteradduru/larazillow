@@ -9,7 +9,7 @@ defineProps({
 <template>
   <div class="flex gap-4 my-8">
     <div v-for="(link, index) in links" :key="index">
-      <Link :href="link.url" :class="link.active ? 'bg-indigo-800 px-2 py-1 rounded-md' : 'px-2 py-1 rounded-md hover:text-indigo-300 '" v-html="link.label" />
+      <Link :href="link.url ? link.url : '#'" :class="link.active ? 'bg-indigo-800 px-2 py-1 rounded-md' : 'px-2 py-1 rounded-md hover:text-indigo-300 '" as="button" v-html="link.label" />
     </div>
   </div>
 </template>
