@@ -7,7 +7,7 @@ const user = computed(() => usePage().props.user)
 </script>
 
 <template>
-  <header class="p-5 border-b border-gray-200 shadow bg-gray-100 dark:bg-gray-900 dark:border-gray-600">
+  <header class="p-5 border-b border-gray-200 shadow bg-gray-100 dark:bg-gray-900 dark:border-gray-600 px-10">
     <div class="container mx-auto">
       <nav class="flex justify-between items-center">
         <div class="text-lg font-medium">
@@ -33,7 +33,7 @@ const user = computed(() => usePage().props.user)
     </div>
   </header>
     
-  <main class="container mx-auto p-3 w-full">
+  <main class="container mx-auto p-3 w-full px-10">
     <div v-if="flashSuccess" class="p-2 border rounded-md border-green-500 bg-green-100 dark:bg-green-900 dark:border-green-700 shadow-md mb-2">
       {{ flashSuccess }}
     </div>
