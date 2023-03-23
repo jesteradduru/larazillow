@@ -28,7 +28,7 @@ defineProps(
       <div class="flex gap-1 mt-3 md:mt-0 items-center text-sm">
         <Link class="btn-outline">Preview</Link>
         <Link class="btn-outline">Edit</Link>
-        <Link class="btn-outline">Delete</Link>
+        <Link class="btn-outline" :href="route('realtor.listing.destroy', {listing: listing.id})" as="button" method="delete">Delete</Link>
       </div>
     </Box>
   </section>
