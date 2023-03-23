@@ -26,4 +26,22 @@
     .dropdown-body{
         @apply absolute
     }
+    .box{
+        @apply p-4 shadow rounded-md border-2 border-gray-200 dark:bg-gray-900 dark:border-2 dark:border-gray-800
+    }
+    .box .header{
+        @apply text-gray-500 mb-1
+    }
+
+    .input-filter-l {
+        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border border-gray-200 dark:border-gray-700 rounded-t-md rounded-l-md rounded-b-md rounded-r-none text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800
+    }
+    
+    .input-filter-r {
+        @apply placeholder:text-gray-400 dark:placeholder:text-gray-600 border border-l-0 border-gray-200 dark:border-gray-700 rounded-t-md rounded-l-none rounded-b-none rounded-r-md text-sm font-medium text-gray-600 dark:text-gray-400 dark:bg-gray-800
+    }
+    
+    .btn-normal {
+        @apply bg-gray-600 hover:bg-gray-500 text-white font-medium p-2 rounded-md
+    }
 }
