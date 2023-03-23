@@ -14,6 +14,7 @@ class ListingController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->authorizeResource(Listing::class, 'listing');
     }
 
     public function index()
@@ -37,7 +38,7 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        Listing::create(
+        $request->user()->listing()->create(
             $request->validate([
                 'beds' => 'required|integer|min:1|max:20',
                 'baths' => 'required|integer|min:1|max:20',
