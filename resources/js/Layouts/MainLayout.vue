@@ -7,9 +7,9 @@ const user = computed(() => usePage().props.user)
 </script>
 
 <template>
-  <header class="p-5 border-b border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-600 px-10">
+  <header class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 w-full">
     <div class="container mx-auto">
-      <nav class="flex justify-between items-center">
+      <nav class="flex justify-between items-center p-4">
         <div class="text-lg font-medium">
           <Link class="" :href="route('listing.index')">Listings</Link>&nbsp;
         </div>
@@ -17,7 +17,7 @@ const user = computed(() => usePage().props.user)
           <Link :href="route('listing.index')">LaraZillow</Link>
         </div>
         <div v-if="user" class="flex gap-3 items-center">
-          <div>{{ user.name }}</div>
+          <Link :href="route('realtor.listing.index')">{{ user.name }}</Link>
           
           <div class="btn-primary">
             <Link :href="route('listing.create')">+ New Listing</Link>
