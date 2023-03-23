@@ -7,7 +7,7 @@ const user = computed(() => usePage().props.user)
 </script>
 
 <template>
-  <header class="p-5 border-b border-gray-200 shadow bg-gray-100 dark:bg-gray-900 dark:border-gray-600 px-10">
+  <header class="p-5 border-b border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-600 px-10">
     <div class="container mx-auto">
       <nav class="flex justify-between items-center">
         <div class="text-lg font-medium">
