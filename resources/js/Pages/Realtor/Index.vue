@@ -1,8 +1,9 @@
 <script setup>
 import Box from '@/Components/UI/Box.vue'
 import Price from '@/Components/Price.vue'
-import ListingSpace from '../../Components/ListingSpace.vue'
-import ListingAddress from '../../Components/ListingAddress.vue'
+import ListingSpace from '@/Components/ListingSpace.vue'
+import ListingAddress from '@/Components/ListingAddress.vue'
+import RealtorFilters from '@/Pages/Realtor/Index/Components/RealtorFilters.vue'
 import { Link } from '@inertiajs/vue3'
 defineProps(
   {
@@ -13,8 +14,8 @@ defineProps(
 
 <template>
   <h1 class="text-3xl mb-4">Your Listings</h1>
-  <section class="mb-4">
-    <div>Filters</div>
+  <section>
+    <RealtorFilters />
   </section>
   <section class="flex flex-col md:grid md:grid-cols-2  gap-2 mx-auto ">
     <Box v-for="listing in listings" :key="listing.id" class="flex flex-col justify-between md:flex-row">
