@@ -1,21 +1,18 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
-const form = useForm({
-  beds: 0,
-  baths: 0,
-  area: 0,
-  city: null,
-  street: null,
-  code: null,
-  street_nr: null,
-  price: 0,
+const props = defineProps({
+  listing: Object,
 })
-const create = () => form.post(route('listing.store'))
-</script>
 
+const form = useForm({
+  ...props.listing,
+})
+const update = () => form.put(route('listing.update', { listing: props.listing.id }))
+</script>
+  
 
 <template>
-  <form @submit.prevent="create">
+  <form @submit.prevent="update">
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-2">
         <label class="label">Beds</label>
@@ -26,7 +23,7 @@ const create = () => form.post(route('listing.store'))
       <div class="col-span-2">
         <label class="label">Baths</label>
         <input v-model.number="form.baths" type="text" class="input-text" />
-        <div v-if="form.errors.baths" class="input-error">{{ form.errors.baths }}</div>
+        <div v-if="form.errors.baths">{{ form.errors.baths }}</div>
       </div>
   
       <div class="col-span-2">
@@ -66,9 +63,10 @@ const create = () => form.post(route('listing.store'))
       </div>
   
       <div class="col-span-6">
-        <button class="btn-primary" type="submit">Create</button>
+        <button class="btn-primary" type="submit">Edit</button>
       </div>
     </div>
   </form>
 </template>
   
+
