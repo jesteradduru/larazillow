@@ -48,7 +48,7 @@ class Listing extends Model
             fn ($query, $value) => $query->where('area', '<=', $value)
         )->when(
             $filters['deleted'] ?? false,
-             fn ($query, $value) => $query->onlyTrashed()
+             fn ($query, $value) => $query->withTrashed()
          )->when(
             $filters['by'] ?? false,
              fn ($query, $value) => 
