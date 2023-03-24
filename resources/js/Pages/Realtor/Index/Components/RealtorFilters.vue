@@ -18,11 +18,11 @@ const sortLabels = {
   created_at: [
     {
       label: 'Earliest',
-      value: 'asc',
+      value: 'desc',
     },
     {
       label: 'Oldest',
-      value: 'desc',
+      value: 'asc',
     },
   ],
   price: [
