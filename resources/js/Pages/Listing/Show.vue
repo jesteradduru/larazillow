@@ -6,9 +6,6 @@ import Box from '@/Components/UI/Box.vue'
 import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
 import { ref } from 'vue'
 
-
-
-
 const props = defineProps({
   listing: Object,
 })

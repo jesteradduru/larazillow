@@ -20,7 +20,7 @@ const user = computed(() => usePage().props.user)
           <Link :href="route('realtor.listing.index')">{{ user.name }}</Link>
           
           <div class="btn-primary">
-            <Link :href="route('listing.create')">+ New Listing</Link>
+            <Link :href="route('realtor.listing.create')">+ New Listing</Link>
           </div>
 
           <Link :href="route('logout')" method="DELETE" as="button">Logout</Link>
