@@ -8,6 +8,7 @@ import { Link } from '@inertiajs/vue3'
 defineProps(
   {
     listings: Array,
+    filters: Object,
   },
 )
 </script>
@@ -15,7 +16,7 @@ defineProps(
 <template>
   <h1 class="text-3xl mb-4">Your Listings</h1>
   <section>
-    <RealtorFilters />
+    <RealtorFilters :filters="filters" />
   </section>
   <section class="flex flex-col md:grid md:grid-cols-2  gap-2 mx-auto ">
     <Box v-for="listing in listings" :key="listing.id" class="flex flex-col justify-between md:flex-row">

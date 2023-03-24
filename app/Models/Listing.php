@@ -13,6 +13,8 @@ class Listing extends Model
     use HasFactory, SoftDeletes;
     
     protected $fillable = [ 'beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price' ];
+    
+    protected $sortable = ['price', 'created_at'];
 
     public function owner() : HasOne
     {
@@ -44,6 +46,13 @@ class Listing extends Model
         ->when(
             $filters['areaTo'] ?? false,
             fn ($query, $value) => $query->where('area', '<=', $value)
-        );
+        )->when(
+            $filters['deleted'] ?? false,
+             fn ($query, $value) => $query->onlyTrashed()
+         )->when(
+            $filters['by'] ?? false,
+             fn ($query, $value) => 
+                !in_array($filters['by'], $this->sortable ) ? $query : $query->orderBy($value, $filters['order'] ?? 'desc')
+         );
     }
 }

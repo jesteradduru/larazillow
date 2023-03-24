@@ -2,16 +2,23 @@
 
 import { reactive, watch } from 'vue'
 import { router } from '@inertiajs/vue3'
-const filterForm = reactive({
-  deleted: false,
+import { debounce } from 'lodash'
+
+const props = defineProps({
+  filters: Object,
 })
 
-watch(filterForm, () => {
+
+const filterForm = reactive({
+  deleted: props.filters.deleted,
+})
+
+watch(() => filterForm.deleted, debounce(() => {
   router.get(route('realtor.listing.index'), filterForm, {
     preserveScroll: true,
     preserveState: true,
   })
-})
+}, 1000))
 </script>
 
 <template>

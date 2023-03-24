@@ -9,7 +9,7 @@ createInertiaApp({
     delay: 0,
     color: '#29d',
     includeCSS: true,
-    // showSpinner: true,
+    showSpinner: true,
   },
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
