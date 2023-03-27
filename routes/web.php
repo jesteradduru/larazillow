@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\RealtorListingController;
+use App\Http\Controllers\RealtorListingImageController;
 use App\Http\Controllers\UserAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,6 @@ Route::prefix('realtor')
     Route::resource('listing', RealtorListingController::class)
     ->only(['index', 'destroy', 'create', 'store', 'show', 'edit', 'update'])
     ->withTrashed();
+
+    Route::resource('listing.image', RealtorListingImageController::class)->only(['create', 'store']);
 });

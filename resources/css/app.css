@@ -48,6 +48,6 @@
     }
 
     .btn-outline {
-        @apply py-1 px-2 rounded-md border border-gray-400 dark:border-gray-300 dark:border-gray-600  text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-300 dark:hover:text-gray-800
+        @apply py-1 px-2 text-center rounded-md border border-gray-400 dark:border-gray-300 dark:border-gray-600  text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-300 dark:hover:text-gray-800
     }
 }

@@ -29,12 +29,15 @@ defineProps(
           </div>
           <ListingAddress :listing="listing" class="dark:text-gray-500" />
         </div>
-        <div class="flex gap-1 mt-3 md:mt-0 items-center text-sm">
-          <Link :href="route('listing.show', {listing : listing.id})" class="btn-outline">Preview</Link>
-          <Link :href="route('realtor.listing.edit', {listing: listing.id})" class="btn-outline">Edit</Link>
-          <Link v-if="!listing.deleted_at" class="btn-outline" :href="route('realtor.listing.destroy', {listing: listing.id})" as="button" method="delete">Delete</Link>
-          <Link v-else :href="route('realtor.listing.restore', {listing: listing.id})" class="btn-outline" as="button" method="put">Restore</Link>
-        </div>
+        <section>
+          <div class="grid grid-cols-3 md:flex gap-1 mt-3 md:mt-0 justify-between text-sm content-around">
+            <Link :href="route('listing.show', {listing : listing.id})" class="btn-outline">Preview</Link>
+            <Link :href="route('realtor.listing.edit', {listing: listing.id})" class="btn-outline">Edit</Link>
+            <Link v-if="!listing.deleted_at" class="btn-outline" :href="route('realtor.listing.destroy', {listing: listing.id})" as="button" method="delete">Delete</Link>
+            <Link v-else :href="route('realtor.listing.restore', {listing: listing.id})" class="btn-outline" as="button" method="put">Restore</Link>
+          </div>
+          <Link :href="route('realtor.listing.image.create', {listing : listing.id})" class="btn-outline mt-2 block text-center flex-1">Images</Link>
+        </section>
       </div>
     </Box>
   </section>
