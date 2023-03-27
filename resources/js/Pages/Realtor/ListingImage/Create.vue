@@ -1,13 +1,24 @@
 <template>
   <Box>
     <template #header>Upload Images</template>
-    <form class="flex gap-4" @submit.prevent="upload">
-      <input type="file" multiple class="input-file" @input="addFiles" />
-      <div class="flex gap-1">
-        <button type="submit" class="btn-outline disabled:opacity-25 disabled:cursor-not-allowed" :disabled="!canUpload">Upload</button>
-        <button type="reset" class="btn-outline" @click="reset">Reset</button>
+    <section>
+      <form class="flex gap-4" @submit.prevent="upload">
+        <input type="file" multiple class="input-file" @input="addFiles" />
+        <div class="flex gap-1">
+          <button type="submit" class="btn-outline disabled:opacity-25 disabled:cursor-not-allowed" :disabled="!canUpload">Upload</button>
+          <button type="reset" class="btn-outline" @click="reset">Reset</button>
+        </div>
+      </form>
+    </section>
+  </Box>
+
+  <Box v-if="listing.images.length" class="mt-4">
+    <template #header>Current Listing Images</template>
+    <section class="grid grid-cols-4 gap-4">
+      <div v-for="image in listing.images" :key="image.id">
+        <img :src="image.src" :alt="image.filename" class="rounded-md" />
       </div>
-    </form>
+    </section>
   </Box>
 </template>
 

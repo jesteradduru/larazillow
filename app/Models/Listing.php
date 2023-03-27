@@ -24,7 +24,7 @@ class Listing extends Model
 
     public function images() : HasMany
     {
-        return $this->hasMany(Listing::class);
+        return $this->hasMany(\App\Models\ListingImage::class);
     }
 
     public function scopeFilter(Builder $query, array $filters) : Builder

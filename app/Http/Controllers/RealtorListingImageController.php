@@ -11,6 +11,7 @@ class RealtorListingImageController extends Controller
     //
     public function create(Listing $listing) 
     {
+        $listing->load('images');
         return inertia('Realtor/ListingImage/Create', 
             [
                 'listing' => $listing
@@ -19,6 +20,7 @@ class RealtorListingImageController extends Controller
     }
 
     public function store(Listing $listing, Request $request) {
+        $listing->load('images');
         if($request->hasFile('images')){
             foreach ($request->file('images') as $file){
                 $path = $file->store('images', 'public');
