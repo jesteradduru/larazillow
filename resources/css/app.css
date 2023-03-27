@@ -28,7 +28,7 @@
         @apply p-4 shadow rounded-md border-2 border-gray-200 dark:bg-gray-900 dark:border-2 dark:border-gray-800
     }
     .box .header{
-        @apply text-gray-500 mb-1
+        @apply text-gray-500 mb-3
     }
 
     .input-filter-l {
