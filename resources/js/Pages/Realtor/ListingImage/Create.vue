@@ -1,10 +1,10 @@
 <template>
   <Box>
     <template #header>Upload Images</template>
-    <form class="flex" @submit.prevent="upload">
-      <input type="file" multiple @input="addFiles" />
-      <div class="flex gap-3">
-        <button type="submit" class="btn-outline">Upload</button>
+    <form class="flex gap-4" @submit.prevent="upload">
+      <input type="file" multiple class="input-file" @input="addFiles" />
+      <div class="flex gap-1">
+        <button type="submit" class="btn-outline disabled:opacity-25 disabled:cursor-not-allowed" :disabled="!canUpload">Upload</button>
         <button type="reset" class="btn-outline" @click="reset">Reset</button>
       </div>
     </form>
@@ -14,11 +14,14 @@
 <script setup>
 import Box from '@/Components/UI/Box.vue'
 import { useForm } from '@inertiajs/vue3'
+import { computed } from 'vue'
 const props = defineProps( { listing: Object })
 
 const form = useForm({
   images: [],
 })
+
+const canUpload = computed(() => form.images.length > 0)
 
 const upload = () => form.post(
   route('realtor.listing.image.store', 
