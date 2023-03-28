@@ -5,6 +5,7 @@ import Price from '@/Components/Price.vue'
 import Box from '@/Components/UI/Box.vue'
 import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
 import { ref } from 'vue'
+import MakeOffer from '@/Pages/Listing/Show/Components/MakeOffer.vue'
 
 const props = defineProps({
   listing: Object,
@@ -59,6 +60,7 @@ const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.lis
           <Price :price="totalInterest" />
         </div>
       </Box>
+      <MakeOffer :listing_id="props.listing.id" :price="props.listing.price" />
     </div>
   </div>
 </template>
