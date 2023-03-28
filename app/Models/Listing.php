@@ -27,6 +27,11 @@ class Listing extends Model
         return $this->hasMany(\App\Models\ListingImage::class);
     }
 
+    public function offers() : HasMany
+    {
+        return $this->hasMany(Offer::class, 'listing_id');
+    }
+
     public function scopeFilter(Builder $query, array $filters) : Builder
     {
         return $query->when(
