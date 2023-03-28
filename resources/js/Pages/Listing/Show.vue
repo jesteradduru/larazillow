@@ -6,6 +6,8 @@ import Box from '@/Components/UI/Box.vue'
 import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
 import { ref } from 'vue'
 import MakeOffer from '@/Pages/Listing/Show/Components/MakeOffer.vue'
+import { usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
 
 const props = defineProps({
   listing: Object,
@@ -15,6 +17,8 @@ const duration = ref(25)
 
 const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.listing.price, duration, interestRate)
 
+const page = usePage()
+const user = computed(() => page.props.user)
 </script>
 
 <template>
@@ -60,7 +64,7 @@ const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.lis
           <Price :price="totalInterest" />
         </div>
       </Box>
-      <MakeOffer :listing_id="props.listing.id" :price="props.listing.price" />
+      <MakeOffer v-if="user" :listing-id="props.listing.id" :price="props.listing.price" />
     </div>
   </div>
 </template>
