@@ -10,6 +10,11 @@
         </div>
       </form>
     </section>
+    <div v-if="imageErrors.length">
+      <div v-for="(error, index) in imageErrors" :key="index" class="input-error">
+        {{ error }}
+      </div>
+    </div>
   </Box>
 
   <Box v-if="listing.images.length" class="mt-4">
@@ -67,5 +72,7 @@ const addFiles = (event) => {
     form.images.push(file)
   }
 }
+
+const imageErrors = computed(() => Object.values(form.errors))
 
 </script>
