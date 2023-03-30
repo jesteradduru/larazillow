@@ -1,26 +1,3 @@
-<script setup>
-import ListingAddress from '@/Components/ListingAddress.vue'
-import ListingSpace from '@/Components/ListingSpace.vue'
-import Price from '@/Components/Price.vue'
-import Box from '@/Components/UI/Box.vue'
-import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
-import { ref } from 'vue'
-import MakeOffer from '@/Pages/Listing/Show/Components/MakeOffer.vue'
-import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
-
-const props = defineProps({
-  listing: Object,
-})
-const interestRate = ref(2.5)
-const duration = ref(25)
-
-const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.listing.price, duration, interestRate)
-
-const page = usePage()
-const user = computed(() => page.props.user)
-</script>
-
 <template>
   <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
     <Box class="md:col-span-7 flex items-center w-full">
@@ -64,7 +41,33 @@ const user = computed(() => page.props.user)
           <Price :price="totalInterest" />
         </div>
       </Box>
-      <MakeOffer v-if="user" :listing-id="props.listing.id" :price="props.listing.price" />
+      <MakeOffer v-if="user" :listing-id="props.listing.id" :price="props.listing.price" @offer-updated="offer = $event" />
     </div>
   </div>
 </template>
+
+
+<script setup>
+import ListingAddress from '@/Components/ListingAddress.vue'
+import ListingSpace from '@/Components/ListingSpace.vue'
+import Price from '@/Components/Price.vue'
+import Box from '@/Components/UI/Box.vue'
+import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
+import { ref } from 'vue'
+import MakeOffer from '@/Pages/Listing/Show/Components/MakeOffer.vue'
+import { usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+
+const props = defineProps({
+  listing: Object,
+})
+const offer = ref(props.listing.price)
+
+const interestRate = ref(2.5)
+const duration = ref(25)
+
+const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(offer, duration, interestRate)
+
+const page = usePage()
+const user = computed(() => page.props.user)
+</script>
