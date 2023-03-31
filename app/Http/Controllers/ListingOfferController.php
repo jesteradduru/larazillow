@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
@@ -10,6 +9,8 @@ class ListingOfferController extends Controller
 {
     public function store(Listing $listing, Request $request)
     {
+        $this->authorize('offer', $listing);
+
         $listing->offers()->save(
             Offer::make(
                 $request->validate([

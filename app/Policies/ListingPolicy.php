@@ -28,7 +28,11 @@ class ListingPolicy
      */
     public function view(?User $user, Listing $listing): bool
     {
-        return true;
+        if ($listing->by_user_id === $user?->id || $listing->offers()->byMe()) {
+            return true;
+        }
+
+        return $listing->sold_at === null;
     }
 
     /**
@@ -69,5 +73,10 @@ class ListingPolicy
     public function forceDelete(User $user, Listing $listing): bool
     {
         return $user->id === $listing->by_user_id;
+    }
+
+    public function offer(?User $user, Listing $listing)
+    {
+        return $user?->id !== $listing->by_user_id && $listing->sold_at === null;
     }
 }
