@@ -1,19 +1,3 @@
-<script setup>
-import Box from '@/Components/UI/Box.vue'
-import Pagination from '@/Components/UI/Pagination.vue'
-import Price from '@/Components/Price.vue'
-import ListingSpace from '@/Components/ListingSpace.vue'
-import ListingAddress from '@/Components/ListingAddress.vue'
-import RealtorFilters from '@/Pages/Realtor/Index/Components/RealtorFilters.vue'
-import { Link } from '@inertiajs/vue3'
-defineProps(
-  {
-    listings: Object,
-    filters: Object,
-  },
-)
-</script>
-
 <template>
   <h1 class="text-3xl mb-4">Your Listings</h1>
   <section>
@@ -37,6 +21,7 @@ defineProps(
             <Link v-else :href="route('realtor.listing.restore', {listing: listing.id})" class="btn-outline" as="button" method="put">Restore</Link>
           </div>
           <Link :href="route('realtor.listing.image.create', {listing : listing.id})" class="btn-outline mt-2 block text-center flex-1">Images ({{ listing.images_count }})</Link>
+          <Link :href="route('realtor.listing.show', {listing : listing.id})" class="btn-outline mt-2 block text-center flex-1">Offers ({{ listing.offers_count }})</Link>
         </section>
       </div>
     </Box>
@@ -46,3 +31,19 @@ defineProps(
   </div>
   <div v-else class="text-center">No Listings to show.</div>
 </template>
+
+<script setup>
+import Box from '@/Components/UI/Box.vue'
+import Pagination from '@/Components/UI/Pagination.vue'
+import Price from '@/Components/Price.vue'
+import ListingSpace from '@/Components/ListingSpace.vue'
+import ListingAddress from '@/Components/ListingAddress.vue'
+import RealtorFilters from '@/Pages/Realtor/Index/Components/RealtorFilters.vue'
+import { Link } from '@inertiajs/vue3'
+defineProps(
+  {
+    listings: Object,
+    filters: Object,
+  },
+)
+</script>

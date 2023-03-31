@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RealtorListingController extends Controller
 {
-    public function __construct(){
-        $this->authorizeResource(Listing::class, 'listing');
-    }
-    //
     public function index(Request $request)
     {
         $filters = [
@@ -25,11 +21,19 @@ class RealtorListingController extends Controller
                 'listings' => Auth::user()
                 ->listing()
                 ->withCount('images')
+                ->withCount('offers')
                 ->filter($filters)
                 ->paginate(5)
                 ->withQueryString()
             ]
         );
+    }
+
+    public function show(Listing $listing)
+    {
+        return inertia("Realtor/Show", [
+            "listing" => $listing->load('offers')
+        ]);
     }
 
     /**
