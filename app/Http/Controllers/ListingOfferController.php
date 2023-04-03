@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class ListingOfferController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function store(Listing $listing, Request $request)
     {
+       
         $this->authorize('offer', $listing);
 
         $listing->offers()->save(

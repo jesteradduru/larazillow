@@ -5,6 +5,12 @@
   </section>
   <section class="flex flex-col md:grid md:grid-cols-2  gap-2 mx-auto ">
     <Box v-for="listing in listings.data" :key="listing.id" :class="{'border-dashed' : listing.deleted_at}">
+      <div
+        v-if="listing.sold_at != null" 
+        class="text-xs font-bold uppercase border border-dashed p-1 border-green-300 text-green-500 dark:border-green-600 dark:text-green-600 inline-block rounded-md mb-2"
+      >
+        sold
+      </div>
       <div class="flex flex-col justify-between md:flex-row">
         <div class="w-full" :class="listing.deleted_at && 'opacity-25'">
           <div class="xl:flex items-center gap-2">

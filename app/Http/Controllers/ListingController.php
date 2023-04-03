@@ -42,7 +42,7 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
-        $this->authorize('view', $listing);
+        // $this->authorize('view', $listing);
         $listing->load(['images']);
         $offer = !Auth::user() ? null : $listing->offers()->byMe()->first();
 
