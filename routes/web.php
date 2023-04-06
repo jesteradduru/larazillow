@@ -7,6 +7,7 @@ use App\Http\Controllers\ListingController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\ListingOfferController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\NotificationSeenController;
 use App\Http\Controllers\RealtorListingController;
 use App\Http\Controllers\RealtorListingAcceptOffer;
 use App\Http\Controllers\RealtorListingImageController;
@@ -33,6 +34,7 @@ Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::resource('notification', NotificationController::class)->middleware('auth')->only(['index']);
+Route::name('notification.seen')->put('notification/{notification}/seen', NotificationSeenController::class)->middleware('auth');
 
 Route::resource('user-account', UserAccountController::class)->only(['create', 'store']);
 Route::resource('listing.offer', ListingOfferController::class)->only(['store']);
