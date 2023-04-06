@@ -19,7 +19,7 @@ import Box from '@/Components/UI/Box.vue'
 import Price from '@/Components/Price.vue'
 import { useForm } from '@inertiajs/vue3'
 import { computed, watch } from 'vue'
-import {debounce} from 'lodash'
+import { debounce } from 'lodash'
 
 const form = useForm({
   amount: props.price,
@@ -48,7 +48,7 @@ const max = computed(() => {
 })
 
 const emit = defineEmits(['offerUpdated'])
-
 watch(() => form.amount, debounce((value) => emit('offerUpdated', value), 500))
+
 
 </script>
