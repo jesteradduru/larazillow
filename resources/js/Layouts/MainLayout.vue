@@ -16,12 +16,12 @@ const user = computed(() => usePage().props.user)
           <Link :href="route('listing.index')">LaraZillow</Link>
         </div>
         <div v-if="user" class="flex gap-3 items-center">
-          <div class="text-gray-500 relative pr-2 py-2 text-lg">
+          <Link :href="route('notification.index')" class="text-gray-500 relative pr-2 py-2 text-lg">
             🔔
             <div v-if="$page.props.user.notificationCount" class="absolute right-0 top-0 w-5 h-5 bg-red-700 dark:bg-red-400 text-white font-medium border border-white dark:border-gray-900 rounded-full text-xs text-center">
               {{ $page.props.user.notificationCount }}
             </div>
-          </div>
+          </Link>
           <Link :href="route('realtor.listing.index')">{{ user.name }}</Link>
           
           <div class="btn-primary">
