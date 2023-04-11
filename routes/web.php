@@ -33,6 +33,10 @@ Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 
+Route::get('/email/verify', function () {
+    return inertia('Auth/EmailVerify');
+})->middleware('auth')->name('verification.notice');
+
 Route::resource('notification', NotificationController::class)->middleware('auth')->only(['index']);
 Route::name('notification.seen')->put('notification/{notification}/seen', NotificationSeenController::class)->middleware('auth');
 
@@ -41,7 +45,7 @@ Route::resource('listing.offer', ListingOfferController::class)->only(['store'])
 
 Route::prefix('realtor')
 ->name('realtor.')
-->middleware('auth')
+->middleware(['auth', 'verified'])
 ->group(function () {
     Route::name('listing.restore')->put('listing/{listing}/restore', [RealtorListingController::class, 'restore'])->withTrashed();
     Route::resource('listing', RealtorListingController::class)
